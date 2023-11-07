@@ -6,7 +6,7 @@ Tugas Besar Dasar-Dasar pemrograman tingkat 1 Kelas B Teknik Informatika Politek
 
 Game Tik Tac Toe berbasis terminal dengan menggunakan Bahasa C
 
-## Fitur Utama
+## 🚀 Fitur Utama
 
 - Fitur 1
 - Fitur 2
