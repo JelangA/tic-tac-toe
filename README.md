@@ -1,10 +1,10 @@
-# Nama Proyek Anda
+# Tic Tac Toe
 
-Deskripsi singkat proyek Anda di sini.
+Tugas Besar Dasar-Dasar pemrograman tingkat 1 Kelas B Teknik Informatika Politeknik Negri Bandung 
 
 ## Gambaran
 
-Tulis gambaran umum tentang proyek Anda. Apa tujuan utamanya? Siapa yang proyek ini ditujukan?
+Game Tik Tac Toe berbasis terminal dengan menggunakan Bahasa C
 
 ## Fitur Utama
 
