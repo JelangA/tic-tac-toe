@@ -1,6 +1,10 @@
 #if !defined(MENU_H)
 #define MENU_H
 
+#include <stdbool.h>
+#include <ctype.h>
+#include <conio.h>
+
 #include "menu.c"
 #include "../player.h"
 

@@ -2,6 +2,12 @@
 
 char board[7][7];
 
+/*
+Deskripsi Modul:
+Modul ini berfungsi untuk menginisialisasi papan permainan Tic-Tac-Toe dengan mengisi seluruhnya dengan spasi kosong.
+I.S.: Papan belum diinisialisasi
+F.S.: Papan diisi dengan spasi kosong
+*/
 void initializeBoard()
 {
     for (int i = 0; i < size; i++)
@@ -13,6 +19,10 @@ void initializeBoard()
     }
 }
 
+/*
+Deskripsi Modul:
+Modul ini mencetak keadaan terkini papan permainan Tic-Tac-Toe ke konsol.
+*/
 void printBoard()
 {
     printf("\n");
@@ -39,8 +49,15 @@ void printBoard()
     printf("\n");
 }
 
+/*
+Deskripsi Modul:
+Modul ini memeriksa apakah sebuah gerakan pada baris dan kolom tertentu valid.
+Input: baris dan kolom
+Output: 1 jika gerakan valid, 0 jika tidak valid
+*/
 int isMoveValid(int row, int col)
 {
+    // Memeriksa apakah posisi yang ditentukan berada dalam batas papan dan masih kosong.
     return row >= 0 && row < size && col >= 0 && col < size && board[row][col] == ' ';
 }
 
@@ -52,13 +69,19 @@ int isBoardFull()
         {
             if (board[i][j] == ' ')
             {
-                return 0;
+                return 0; //papan masih belum penuh
             }
         }
     }
     return 1; // Papannya penuh coy
 }
 
+/*
+Deskripsi Modul:
+Modul ini memeriksa apakah terdapat kemenangan berdasarkan simbol dan ukuran papan yang ditentukan.
+Input: simbol pemain, ukuran papan
+Output: 1 jika terdapat kemenangan, 0 jika tidak
+*/
 int checkWin(char symbol, int size)
 {
     switch (size)
@@ -103,7 +126,7 @@ int checkWin(char symbol, int size)
         }
         if (diag1Win || diag2Win)
         {
-            return 1;
+            return 1; // Win
         }
 
         return 0;
@@ -112,44 +135,44 @@ int checkWin(char symbol, int size)
     case 5:
     {
         // Check rows and columns
-        for (int i = 0; i < size - 1; i++)
+        for (int i = 0; i < size; i++)
         {
-            int rowWin = 1;
-            int colWin = 1;
-            for (int j = 0; j < size - 1; j++)
+            int rowWin = 0;
+            int colWin = 0;
+            for (int j = 0; j < size; j++)
             {
-                if (board[i][j] != symbol)
+                if (board[i][j] == symbol)
                 {
-                    rowWin = 0;
+                    rowWin++;
                 }
-                if (board[j][i] != symbol)
+                if (board[j][i] == symbol)
                 {
-                    colWin = 0;
+                    colWin++;
                 }
             }
-            if (rowWin || colWin)
+            if (rowWin >= 4 || colWin >= 4)
             {
                 return 1; // Win
             }
         }
 
         // Check diagonals
-        int diag1Win = 1;
-        int diag2Win = 1;
-        for (int i = 0; i < size - 1; i++)
+        int diag1Win = 0;
+        int diag2Win = 0;
+        for (int i = 0; i < size; i++)
         {
-            if (board[i][i] != symbol)
+            if (board[i][i] == symbol)
             {
-                diag1Win = 0;
+                diag1Win++;
             }
-            if (board[i][size - 1 - i] != symbol)
+            if (board[i][size - 1 - i] == symbol)
             {
-                diag2Win = 0;
+                diag2Win++;
             }
         }
-        if (diag1Win || diag2Win)
+        if (diag1Win >= 4 || diag2Win >= 4)
         {
-            return 1;
+            return 1; // Win
         }
 
         return 0;
@@ -158,44 +181,44 @@ int checkWin(char symbol, int size)
     case 7:
     {
         // Check rows and columns
-        for (int i = 0; i < size - 2; i++)
+        for (int i = 0; i < size; i++)
         {
-            int rowWin = 1;
-            int colWin = 1;
-            for (int j = 0; j < size - 2; j++)
+            int rowWin = 0;
+            int colWin = 0;
+            for (int j = 0; j < size; j++)
             {
-                if (board[i][j] != symbol)
+                if (board[i][j] == symbol)
                 {
-                    rowWin = 0;
+                    rowWin++;
                 }
-                if (board[j][i] != symbol)
+                if (board[j][i] == symbol)
                 {
-                    colWin = 0;
+                    colWin++;
                 }
             }
-            if (rowWin || colWin)
+            if (rowWin >= 5 || colWin >= 5)
             {
                 return 1; // Win
             }
         }
 
         // Check diagonals
-        int diag1Win = 1;
-        int diag2Win = 1;
-        for (int i = 0; i < size - 2; i++)
+        int diag1Win = 0;
+        int diag2Win = 0;
+        for (int i = 0; i < size; i++)
         {
-            if (board[i][i] != symbol)
+            if (board[i][i] == symbol)
             {
-                diag1Win = 0;
+                diag1Win++;
             }
-            if (board[i][size - 1 - i] != symbol)
+            if (board[i][size - 1 - i] == symbol)
             {
-                diag2Win = 0;
+                diag2Win++;
             }
         }
-        if (diag1Win || diag2Win)
+        if (diag1Win >= 5 || diag2Win >= 5)
         {
-            return 1;
+            return 1; // Win
         }
 
         return 0;

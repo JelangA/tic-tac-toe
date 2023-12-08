@@ -3,12 +3,10 @@
 
 #include "../player.h"
 #include "highscore.c"
-#include <stdio.h>
 
 void tulisHighscore(Player pemain);
-
 int hitungBarisFile();
-
 void sortHighscore();
+void displayHighscores();
 
 #endif // HIGHSCORE_H

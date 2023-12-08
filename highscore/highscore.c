@@ -1,3 +1,8 @@
+
+/* DESKRIPSI MODUL
+Function
+Modul ini bertujuan untuk melakukan write pada highscore.txt melalui ADT Player
+*/
 void tulisHighscore(Player pemain)
 {
     FILE *fptr;
@@ -60,7 +65,6 @@ void sortHighscore()
     temp.score = 0;
 
     fptr = fopen("highscore.dat", "r"); // variabel yang menampung nama file dan fungsi yang akan digunakan
-    // printf("total line = %d\n", total_line);
 
     if (fptr == NULL) // program akan tertutup apabila file tidak ada
     {
@@ -109,4 +113,28 @@ void sortHighscore()
     }
 
     fclose(fptr);
+}
+
+/* DESKRIPSI MODUL
+Function
+Modul ini bertujuan untuk menampilkan seluhur data yang terdapat pada highscore.dat ke terminal 
+*/
+void displayHighscores() {
+    FILE *file = fopen("highscore.dat", "r");
+
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return;
+    }
+
+    printf("Highscores:\n");
+
+    char nama[50];
+    int score;
+
+    while (fscanf(file, "%s %d\n", nama, &score) == 2) {
+        printf("%s %d\n", nama, score);
+    }
+
+    fclose(file);
 }
