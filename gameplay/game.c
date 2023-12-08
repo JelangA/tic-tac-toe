@@ -1,6 +1,6 @@
+#include "../menu/menu.h"
+
 char board[7][7];
-int size;
-int opponent;
 
 void initializeBoard()
 {
@@ -203,46 +203,4 @@ int checkWin(char symbol, int size)
     }
 
     return 0;
-}
-int chooseBoard(){
-    printf("Choose the board size : \n1. 3x3\n2. 5x5\n3. 7x7\nChoose : ");
-        scanf("%d", &size);
-        switch (size)
-        {
-        case 1:
-            size = 3;
-            break;
-
-        case 2:
-            size = 5;
-            break;
-
-        case 3:
-            size = 7;
-            break;
-        default:
-            printf("invalid choice ");
-        }
-
-        if (size < 3 || size > 7 || size % 2 == 0)
-        {
-            printf("Invalid board size. Please choose 3, 5, or 7.\n");
-            return 1;
-        }
-    return 0;
-}
-int chooseOpponent()
-{
-	do
-	{
-		printf("Choose your opponent : \n1. 2 Player\n2. BOT\nChoose : ");
-		scanf("%d", &opponent);
-		if (opponent != 1 && opponent != 2)
-		{
-			printf("Invalid Choice Please choose just two if them.\n");
-		}
-	} while (opponent != 1 && opponent != 2);
-	system("CLS");
-
-	return 0;
 }
