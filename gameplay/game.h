@@ -8,5 +8,7 @@ void printBoard();
 int isMoveValid(int row, int col);
 int checkWin(char symbol, int size);
 int isBoardFull();
+int chooseBoard();
+int chooseOpponent();
 
 #endif // GAME_H
