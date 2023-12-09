@@ -1,7 +1,6 @@
 #if !defined(HIGHSCORE_H)
 #define HIGHSCORE_H
 
-#include "../player.h"
 #include "highscore.c"
 
 void tulisHighscore(Player pemain);

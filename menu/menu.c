@@ -1,7 +1,3 @@
-int start;
-int opponent;
-int size, chSize;
-
 void InputNamaPemain(Player *p1, Player *p2)
 {
     printf("Masukkan Nama Pemain 1 (X) : ");
@@ -64,7 +60,7 @@ int chooseBoard()
 
     return 0;
 }
-int chooseOpponent()
+int chooseOpponent(char **currmenu)
 {
     do
     {
@@ -77,9 +73,9 @@ int chooseOpponent()
     } while (opponent != 1 && opponent != 2);
     system("CLS");
 
-    return 0;
+    *currmenu = "inputNama";
 }
-int mainMenu()
+int mainMenu(char **curmenu)
 {
     printf("Welcome to Tic Toe Game\n");
     printf("1. Play Game\n2. Exit the game\n");
@@ -89,15 +85,74 @@ int mainMenu()
         scanf("%d", &start);
         if (start == 1)
         {
-            return 0;
+            *curmenu = "oponent";
         }
         else if (start == 2)
         {
-            exit(0);
+            *curmenu = "exit";
         }
         else
         {
             printf("Please choose just between of them\n");
         }
     } while (start != 1 && start != 2);
+    system("cls");
+}
+
+void PlayGame(char **currmenu){
+     int row, col;
+    symbolX = 'X';
+    symbolO = 'O';
+    char currentPlayer = symbolX;
+    char *currentNamePlayer = player1.nama;
+    if (opponent == 1)
+    {
+        chooseBoard();
+        system("CLS");
+        initializeBoard();
+
+        do
+        {
+            printBoard();
+            // Input and move validation
+            do
+            {
+                printf("Player %s, enter your move : \n", currentNamePlayer);
+                printf("your row : ");
+                scanf("%d", &row);
+                printf("your collumn : ");
+                scanf("%d", &col);
+                row--;
+                col--;
+            } while (!isMoveValid(row, col));
+
+            board[row][col] = currentPlayer;
+
+            if (checkWin(currentPlayer, size))
+            {
+                printBoard();
+                printf("Player %s wins!\n", currentNamePlayer);
+                
+                break;
+            }
+
+            if (isBoardFull())
+            {
+                printBoard();
+                printf("draw!\n");
+                break;
+            }
+            system("CLS");
+
+            // Switch player
+            currentPlayer = (currentPlayer == symbolX) ? symbolO : symbolX;
+            currentNamePlayer = (currentNamePlayer == player1.nama) ? player2.nama : player1.nama;
+
+        } while (1);
+        *currmenu = "exit"; 
+    }
+    else if (opponent == 2)
+    {
+        chooseBoard();
+    }
 }

@@ -1,4 +1,3 @@
-
 /* DESKRIPSI MODUL
 Function
 Modul ini bertujuan untuk melakukan write pada highscore.txt melalui ADT Player

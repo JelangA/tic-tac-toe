@@ -1,13 +1,10 @@
-#include "../menu/menu.h"
-
-char board[7][7];
-
 /*
 Deskripsi Modul:
 Modul ini berfungsi untuk menginisialisasi papan permainan Tic-Tac-Toe dengan mengisi seluruhnya dengan spasi kosong.
 I.S.: Papan belum diinisialisasi
 F.S.: Papan diisi dengan spasi kosong
 */
+
 void initializeBoard()
 {
     for (int i = 0; i < size; i++)
@@ -82,18 +79,18 @@ Modul ini memeriksa apakah terdapat kemenangan berdasarkan simbol dan ukuran pap
 Input: simbol pemain, ukuran papan
 Output: 1 jika terdapat kemenangan, 0 jika tidak
 */
-int checkWin(char symbol, int size)
+int checkWin(char symbol, int sizes)
 {
-    switch (size)
+    switch (sizes)
     {
     case 3:
     {
         // Check rows and columns
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             int rowWin = 1;
             int colWin = 1;
-            for (int j = 0; j < size; j++)
+            for (int j = 0; j < sizes; j++)
             {
                 if (board[i][j] != symbol)
                 {
@@ -113,13 +110,13 @@ int checkWin(char symbol, int size)
         // Check diagonals
         int diag1Win = 1;
         int diag2Win = 1;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             if (board[i][i] != symbol)
             {
                 diag1Win = 0;
             }
-            if (board[i][size - 1 - i] != symbol)
+            if (board[i][sizes - 1 - i] != symbol)
             {
                 diag2Win = 0;
             }
@@ -135,11 +132,11 @@ int checkWin(char symbol, int size)
     case 5:
     {
         // Check rows and columns
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             int rowWin = 0;
             int colWin = 0;
-            for (int j = 0; j < size; j++)
+            for (int j = 0; j < sizes; j++)
             {
                 if (board[i][j] == symbol)
                 {
@@ -159,13 +156,13 @@ int checkWin(char symbol, int size)
         // Check diagonals
         int diag1Win = 0;
         int diag2Win = 0;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             if (board[i][i] == symbol)
             {
                 diag1Win++;
             }
-            if (board[i][size - 1 - i] == symbol)
+            if (board[i][sizes - 1 - i] == symbol)
             {
                 diag2Win++;
             }
@@ -181,11 +178,11 @@ int checkWin(char symbol, int size)
     case 7:
     {
         // Check rows and columns
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             int rowWin = 0;
             int colWin = 0;
-            for (int j = 0; j < size; j++)
+            for (int j = 0; j < sizes; j++)
             {
                 if (board[i][j] == symbol)
                 {
@@ -205,13 +202,13 @@ int checkWin(char symbol, int size)
         // Check diagonals
         int diag1Win = 0;
         int diag2Win = 0;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizes; i++)
         {
             if (board[i][i] == symbol)
             {
                 diag1Win++;
             }
-            if (board[i][size - 1 - i] == symbol)
+            if (board[i][sizes - 1 - i] == symbol)
             {
                 diag2Win++;
             }
