@@ -11,6 +11,6 @@ int chooseBoard();
 int chooseOpponent();
 int mainMenu();
 void InputNamaPemain(Player *p1, Player *p2);
-void winner();
+void PlayGame();
 
 #endif // MENU_H
