@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/branch/tic-tac-toe",
+      "program": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/branch/tic-tac-toe/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,3 @@
-int start;
-int opponent;
-int size, chSize;
-
 void InputNamaPemain(Player *p1, Player *p2)
 {
     printf("Masukkan Nama Pemain 1 (X) : ");
@@ -100,4 +96,60 @@ int mainMenu()
             printf("Please choose just between of them\n");
         }
     } while (start != 1 && start != 2);
+}
+
+void winner(){
+     int row, col;
+    symbolX = 'X';
+    symbolO = 'O';
+    char currentPlayer = symbolX;
+    char *currentNamePlayer = player1.nama;
+    if (opponent == 1)
+    {
+        chooseBoard();
+        system("CLS");
+        initializeBoard();
+
+        do
+        {
+            printBoard();
+            // Input and move validation
+            do
+            {
+                printf("Player %s, enter your move : \n", currentNamePlayer);
+                printf("your row : ");
+                scanf("%d", &row);
+                printf("your collumn : ");
+                scanf("%d", &col);
+                row--;
+                col--;
+            } while (!isMoveValid(row, col));
+
+            board[row][col] = currentPlayer;
+
+            if (checkWin(currentPlayer, size))
+            {
+                printBoard();
+                printf("Player %c wins!\n", currentPlayer);
+                break;
+            }
+
+            if (isBoardFull())
+            {
+                printBoard();
+                printf("draw!\n");
+                break;
+            }
+            system("CLS");
+
+            // Switch player
+            currentPlayer = (currentPlayer == symbolX) ? symbolO : symbolX;
+            currentNamePlayer = (currentNamePlayer == player1.nama) ? player2.nama : player1.nama;
+
+        } while (1);
+    }
+    else if (opponent == 2)
+    {
+        chooseBoard();
+    }
 }
