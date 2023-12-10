@@ -1,4 +1,4 @@
-void InputNamaPemain(Player *p1, Player *p2)
+void InputNamaPemain(Player *p1, Player *p2, char **currmenu)
 {
     printf("Masukkan Nama Pemain 1 (X) : ");
     scanf(" %[^\n]", &p1->nama);
@@ -24,12 +24,14 @@ void InputNamaPemain(Player *p1, Player *p2)
         printf("\n\t\t\tMaksimal Nama Pemain Adalah 12 Karakter Tanpa Spasi...");
         getch();
         system("cls");
-        InputNamaPemain(p1, p2);
+        // InputNamaPemain(p1, p2);
     }
+    *currmenu = "playgame";
 }
 
 int chooseBoard()
 {
+    int chSize;
     printf("Choose the board size : \n1. 3x3\n2. 5x5\n3. 7x7\n");
     do
     {
@@ -99,24 +101,28 @@ int mainMenu(char **curmenu)
     system("cls");
 }
 
-void PlayGame(char **currmenu){
-     int row, col;
+void PlayGame(char **currmenu)
+{
+    int row, col;
     symbolX = 'X';
     symbolO = 'O';
-    char currentPlayer = symbolX;
-    char *currentNamePlayer = player1.nama;
+    currentNamePlayer = player1.nama;
+    currentPlayer = symbolX;
+    time_t waktu = time(NULL); // variabel yang berisi waktu saat modul dijalankan
     if (opponent == 1)
     {
         chooseBoard();
         system("CLS");
-        initializeBoard();
+        initializeBoard(); 
 
         do
         {
             printBoard();
+            time_t waktu = time(NULL); // variabel yang berisi waktu saat modul dijalankan
             // Input and move validation
             do
             {
+
                 printf("Player %s, enter your move : \n", currentNamePlayer);
                 printf("your row : ");
                 scanf("%d", &row);
@@ -124,15 +130,25 @@ void PlayGame(char **currmenu){
                 scanf("%d", &col);
                 row--;
                 col--;
+
             } while (!isMoveValid(row, col));
 
-            board[row][col] = currentPlayer;
+            time_t waktugiliran = time(NULL);
+            if (waktugiliran - waktu >= 10)
+            {
+                printf("!!!!!Waktu Habis!!!!!");
+                printf("\n\tTekan Enter Untuk Lanjut..\n");
+                time_t waktugiliran = time(NULL);
+                getch();
+            }
+            else
+            {
+                board[row][col] = currentPlayer;
+            }
 
             if (checkWin(currentPlayer, size))
             {
                 printBoard();
-                printf("Player %s wins!\n", currentNamePlayer);
-                
                 break;
             }
 
@@ -149,10 +165,52 @@ void PlayGame(char **currmenu){
             currentNamePlayer = (currentNamePlayer == player1.nama) ? player2.nama : player1.nama;
 
         } while (1);
-        *currmenu = "exit"; 
+        system("cls");
+
+        *currmenu = "result";
     }
     else if (opponent == 2)
     {
         chooseBoard();
+    }
+}
+
+void resultMenu(char **currmenu)
+{
+    int choise;
+    if (currentNamePlayer == player1.nama)
+    {
+        player1.score = player1.score + 1;
+    }
+    else if (currentNamePlayer == player2.nama)
+    {
+        player2.score = player2.score + 1;
+    }
+    printf("    Result\n");
+    printf("%s = %d kali menang\n%s = %d kali menang\n", player1.nama, player1.score, player2.nama, player2.score);
+    printf("Ulangi permainan ? \n 1. Ya \n 2. Tidak\n");
+    printf("Input : ");
+    scanf("%d", &choise);
+    printf("%d", choise);
+    *currmenu = (choise == 1) ? "playgame" : "winner";
+}
+
+void winmenu(char **currmenu)
+{
+    printf("%s wins!\n", currentNamePlayer);
+    tulisHighscore(player1);
+    tulisHighscore(player2);
+    sortHighscore();
+    *currmenu = "home";
+    char input;
+
+    printf("Tekan Enter untuk keluar...\n");
+
+    input = getch();
+    if (input == '\r' || input == '\n')
+    {
+        printf("%d", input);
+        printf("\nProgram berakhir.\n");
+        // return 0;
     }
 }

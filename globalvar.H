@@ -5,12 +5,15 @@
 
 int start;
 int opponent;
-int size, chSize;
+int size;
 int move;
 
 char symbolX;
 char symbolO;
 char board[7][7];
+
+char currentPlayer;
+char *currentNamePlayer;
 
 // inisialisasi player
 Player player1;

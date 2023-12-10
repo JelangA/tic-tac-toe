@@ -11,9 +11,11 @@
 // int move;
 int main()
 {
+
     char *currentMenu = "home";
     do
     {
+        system("cls");
         if (currentMenu == "home")
         {
             displayHighscores();
@@ -25,15 +27,26 @@ int main()
         }
         else if (currentMenu == "inputNama")
         {
-            InputNamaPemain(&player1, &player2);
+            InputNamaPemain(&player1, &player2, &currentMenu);
+        }
+        else if (currentMenu == "playgame")
+        {
             PlayGame(&currentMenu);
-        }else
+        }
+        else if (currentMenu == "winner")
+        {
+            winmenu(&currentMenu);
+        }
+        else if (currentMenu == "result")
+        {
+            resultMenu(&currentMenu);
+        }
+        else
         {
             return 1;
         }
-        
-
     } while (currentMenu != "exit");
+    
 
     return 0;
 }

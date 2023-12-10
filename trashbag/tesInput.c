@@ -18,13 +18,9 @@ int main()
     player1.score = 21; // input nama ke ADT
     // player 1
 
-    tulisHighscore(player1); // Simpan Data ADT ke FILE
-
-    // player 2
-    //  strcpy(player2.nama, "aaaaa"); //input nama ke ADT
-    player2.score = 31;      // input nama ke ADT
-    tulisHighscore(player2); // Simpan Data ADT ke FILE
-    sortHighscore();         // Sorting FILE
+    tulisHighscore(player1);
+    tulisHighscore(player2);
+    sortHighscore();
 
     printf("%s : %d \n%s : %d\n", player1.nama, player1.score, player2.nama, player2.score);
 }
