@@ -1,5 +1,6 @@
 void InputNamaPemain(Player *p1, Player *p2, char **currmenu)
 {
+    printf("<=========================================>\n");
     printf("Masukkan Nama Pemain 1 (X) : ");
     scanf(" %[^\n]", &p1->nama);
     printf("Masukkan Nama Pemain 2 (O) : ");
@@ -32,7 +33,9 @@ void InputNamaPemain(Player *p1, Player *p2, char **currmenu)
 int chooseBoard()
 {
     int chSize;
-    printf("Choose the board size : \n1. 3x3\n2. 5x5\n3. 7x7\n");
+    printf("<============================================================>\n\n");
+    printf("Choose the board size : \n1. 3x3\n2. 5x5\n3. 7x7\n\n");
+    printf("<============================================================>\n");
     do
     {
         printf("Choose :");
@@ -66,11 +69,12 @@ int chooseOpponent(char **currmenu)
 {
     do
     {
-        printf("Choose your opponent : \n1. Player vs Player\n2. Player vs BOT\nChoose : ");
+        printf("|===============================|\n");
+        printf("| Choose your opponent :	      	|\n|===============================|\n| 1. Player vs Player	      	|\n| 2. Player vs BOT(on working)	|\n|===============================|\nChoose :");
         scanf("%d", &opponent);
         if (opponent != 1 && opponent != 2)
         {
-            printf("Invalid Choice Please choose just two if them.\n");
+            printf("!!! Invalid Choice Please choose just two if them. !!!\n");
         }
     } while (opponent != 1 && opponent != 2);
     system("CLS");
@@ -79,8 +83,10 @@ int chooseOpponent(char **currmenu)
 }
 int mainMenu(char **curmenu)
 {
-    printf("Welcome to Tic Toe Game\n");
-    printf("1. Play Game\n2. Exit the game\n");
+    printf("|=============================|\n");
+    printf("| Welcome to Tic Tac Toe Game |\n");
+    printf("|=============================|\n");
+    printf("| 1. Play Game		      |\n| 2. Exit the game	      |\n|=============================|\nby DORAEMON\n");
     do
     {
         printf("Choose :");
@@ -113,17 +119,31 @@ void PlayGame(char **currmenu)
     {
         chooseBoard();
         system("CLS");
-        initializeBoard(); 
+        initializeBoard();
 
         do
         {
+            if (size == 3)
+            {
+                printf("   c1  c2  c3\nr1   |   |   \n  ----------\nr2   |   |   \n  ----------\nr3   |   |   \n");
+            }
+            else if (size == 5)
+            {
+                printf("   c1  c2  c3  c4  c5\nr1   |   |   |   |   \n  ------------------\nr2   |   |   |   |   \n  ------------------\nr3   |   |   |   |   \n  ------------------\nr4   |   |   |   |  \n  ------------------\nr5   |   |   |   |\n\n");
+            }
+            else if (size == 7)
+            {
+                printf("   c1  c2  c3  c4  c5  c6  c7\nr1   |   |   |   |   |   |\n  --------------------------\nr2   |   |   |   |   |   |\n  --------------------------\nr3   |   |   |   |   |   |\n  --------------------------\nr4   |   |   |   |   |   |   \n  --------------------------\nr5   |   |   |   |   |   |   \n  --------------------------\nr6   |   |   |   |   |   |   \n  --------------------------\nr7   |   |   |   |   |   |  \n");
+            }
             printBoard();
+            printf("c = collum\nr = row\n");
             time_t waktu = time(NULL); // variabel yang berisi waktu saat modul dijalankan
             // Input and move validation
             do
             {
 
                 printf("Player %s, enter your move : \n", currentNamePlayer);
+                printf("Your time is 10 sec\n");
                 printf("your row : ");
                 scanf("%d", &row);
                 printf("your collumn : ");
@@ -178,6 +198,7 @@ void PlayGame(char **currmenu)
 void resultMenu(char **currmenu)
 {
     int choise;
+    printBoard();
     if (currentNamePlayer == player1.nama)
     {
         player1.score = player1.score + 1;
@@ -200,7 +221,10 @@ void winmenu(char **currmenu)
     printf("%s wins!\n", currentNamePlayer);
     tulisHighscore(player1);
     tulisHighscore(player2);
+    clearPlayer(&player1);
+    clearPlayer(&player2);
     sortHighscore();
+
     *currmenu = "home";
     char input;
 

@@ -9,10 +9,12 @@
 #include "menu.c"
 
 
-int chooseBoard();
-int chooseOpponent();
-int mainMenu();
 void InputNamaPemain(Player *p1, Player *p2, char **currmenu);
-void PlayGame();
+int chooseBoard();
+int chooseOpponent(char **currmenu);
+int mainMenu(char **curmenu);
+void PlayGame(char **currmenu);
+void resultMenu(char **currmenu);
+void winmenu(char **currmenu);
 
 #endif // MENU_H

@@ -116,24 +116,39 @@ void sortHighscore()
 
 /* DESKRIPSI MODUL
 Function
-Modul ini bertujuan untuk menampilkan seluhur data yang terdapat pada highscore.dat ke terminal 
+Modul ini bertujuan untuk menampilkan seluhur data yang terdapat pada highscore.dat ke terminal
 */
-void displayHighscores() {
+void displayHighscores()
+{
     FILE *file = fopen("highscore.dat", "r");
 
-    if (file == NULL) {
+    if (file == NULL)
+    {
         printf("Error opening the file.\n");
         return;
     }
 
     printf("Highscores:\n");
-
+    printf("|===================================|\n");
     char nama[50];
     int score;
 
-    while (fscanf(file, "%s %d\n", nama, &score) == 2) {
-        printf("%s %d\n", nama, score);
+    while (fscanf(file, "%s %d\n", nama, &score) == 2)
+    {
+        
+        printf(" %s your score is %d \n", nama, score);
     }
+    printf("|===================================|\n\n");
 
     fclose(file);
+}
+
+// Fungsi untuk membersihkan isi ADT Player
+void clearPlayer(Player *player)
+{
+    // Mengosongkan nama
+    memset(player->nama, 0, sizeof(player->nama));
+
+    // Mengosongkan score
+    player->score = 0;
 }

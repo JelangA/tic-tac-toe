@@ -7,5 +7,6 @@ void tulisHighscore(Player pemain);
 int hitungBarisFile();
 void sortHighscore();
 void displayHighscores();
+void clearPlayer(Player *player);
 
 #endif // HIGHSCORE_H

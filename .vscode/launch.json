@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/fix/tic-tac-toe",
-      "program": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/fix/tic-tac-toe/build/Debug/outDebug",
+      "cwd": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/tic-tac-toe",
+      "program": "d:/OneDrive - Politeknik Negeri Bandung/Semester 1/Dasar Dasar Pemrograman/c++/proyek/compare/tic-tac-toe/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
